@@ -23,6 +23,9 @@ use fixed_hash::{construct_fixed_hash, impl_fixed_hash_conversions};
 use scale_info_crate::TypeInfo;
 use uint::{construct_uint, uint_full_mul_reg};
 
+#[cfg(feature = "proptest")]
+use proptest_derive;
+
 /// Error type for conversion.
 #[derive(Debug, PartialEq, Eq)]
 pub enum Error {
