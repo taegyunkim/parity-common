@@ -43,6 +43,7 @@ macro_rules! construct_fixed_hash {
 	( $(#[$attr:meta])* $visibility:vis struct $name:ident ( $n_bytes:expr ); ) => {
 		#[repr(C)]
 		$(#[$attr])*
+        #[cfg_attr(feature = "proptest", derive(proptest_derive::Arbitrary))]
 		$visibility struct $name (pub [u8; $n_bytes]);
 
 		impl From<[u8; $n_bytes]> for $name {
